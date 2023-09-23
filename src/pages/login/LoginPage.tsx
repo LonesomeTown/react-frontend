@@ -59,7 +59,7 @@ const LoginPage: React.FC = () => {
           <Grid container>
               <Grid item xs>
                 <Link href="/forgot-password" variant="body2">
-                  Forgot password?
+                  {"Forgot password?"}
                 </Link>
               </Grid>
               <Grid item>

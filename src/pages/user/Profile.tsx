@@ -20,14 +20,14 @@ const Profile: React.FC = () => {
   );
 
   function handleUploadClick() {
-    document.getElementById('profileUpload')?.click();
+    // document.getElementById('profileUpload')?.click();
   }
 
   function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const file = event.target.files?.[0];
-    if (file) {
-      // Handle the file upload here
-    }
+    // const file = event.target.files?.[0];
+    // if (file) {
+    //   // Handle the file upload here
+    // }
   }
 };
 

@@ -1,7 +1,7 @@
 import axios from "axios";
 
+const BASE_URL = "http://localhost:9000/api/";
 const USER_API_URL = "http://localhost:9000/user/";
-// const USER_API_URL = "https://9429d5b9-a4ce-43d8-bf6b-637cc223febe.mock.pstmn.io/";
 
 const register = (username: string, email: string, password: string) => {
   return axios.post(USER_API_URL + "signup", {
@@ -27,9 +27,25 @@ const login = (username: string, password: string) => {
     });
 };
 
+const resetPassword = (token: string, password: string) => {
+  return axios.post(BASE_URL + "password-reset/confirm", {
+    token,
+    password,
+  });
+};
+
 const logout = () => {
   localStorage.removeItem("user");
   return axios.post(USER_API_URL + "logout").then((response) => {
+    return response.data;
+  });
+};
+
+const sendEmail = (email: string) => {
+    return axios.post(BASE_URL + "password-reset-link", {
+      email
+    })
+    .then((response) => {
     return response.data;
   });
 };
@@ -62,7 +78,9 @@ const fakeAuthProvider = {
     register,
     login,
     logout,
+    sendEmail,
     getCurrentUser,
+    resetPassword,
     fakeAuthProvider,
   }
   
